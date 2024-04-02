@@ -37,8 +37,8 @@ M.abc = {
     -- ["<leader>x"] = { "<cmd> x <CR>", "Force save and quit" },
 
     -- move lines up or down
-    ["K"] = { "ddkP", "Move line up" },
-    ["J"] = { "ddp", "Move line down" },
+    ["K"] = { ":m .-2<CR>", "Move line up" },
+    ["J"] = { ":m .+1<CR>", "Move line down" },
 
     -- Use tabs to indent
     ["<Tab>"] = { ">>", "Indent right" },
@@ -47,7 +47,34 @@ M.abc = {
 
   i = {
     -- use ctrl backspace to remove a word
-    ["<C-BS>"] = { "<C-w>", "Kill word backwars", { noremap = true } },
+    ["<S-BS>"] = { "<C-w>", "Kill word backwars", { noremap = true } },
+  },
+
+  v = {
+    -- move lines up or down
+    ["<S-k>"] = { ":m '<-2<CR>gv=gv", "Move line up" },
+    ["J"] = { ":m '>+1<CR>gv=gv", "Move line down" },
+  },
+}
+
+M.comment = {
+  plugin = true,
+
+  -- toggle comment in both modes
+  n = {
+    ["<leader>/"] = {
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      "Toggle comment",
+    },
+  },
+
+  v = {
+    ["<leader>/"] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "Toggle comment",
+    },
   },
 }
 

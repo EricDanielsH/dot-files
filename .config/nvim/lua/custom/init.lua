@@ -9,8 +9,8 @@ local config = require("core.utils").load_config()
 -- vim.cmd 'colorscheme onedark'
 
 -- folding
-opt.foldmethod = "marker"
-opt.foldmarker = "{,}"
+-- opt.foldmethod = "marker"
+-- opt.foldmarker = "{,}"
 
 -- 80 char max
 -- opt.colorcolumn = "100"
