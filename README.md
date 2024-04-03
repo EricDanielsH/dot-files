@@ -3,3 +3,19 @@ Because NvChad updated to 2.5, we need to use a special command to install versi
 ```
 git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 ```
+# Current neovim file system
+```
+.
+└── nvim/
+    ├── init.lua
+    ├── configs/
+    │   ├── lazy.lua
+    │   ├── mason.lua
+    │   ├── lspconfig.lua
+    │   └── ...
+    └── base/
+        ├── init.lua
+        └── plugins/
+            ├── init.lua
+            └── lazy.lua
+```
