@@ -10,6 +10,9 @@ return {
     "rust-analyzer",
     "pyright",
     "clangd",
+    "solidity",
+    "solidity-ls",
+
   },
   max_concurrent_installers = 10,
 }
