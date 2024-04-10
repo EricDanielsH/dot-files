@@ -63,6 +63,9 @@ vim.keymap.set("n", "<leader>h", ":split<CR>", { desc = "Horizontal buffer" })
 -- Create new buffer
 vim.keymap.set("n", "<leader>b", "<cmd>enew<CR>", { desc = "New buffer" })
 
+-- Delete current buffer
+vim.keymap.set("n", "<leader>db", "<cmd>bd<CR>", { desc = "Delete buffer" })
+
 -- Intelligent cursor
 vim.keymap.set("n", "k", "(v:count == 0 ? 'gk' : 'k')", { expr = true, desc = "Move down" })
 vim.keymap.set("n", "j", "(v:count == 0 ? 'gj' : 'j')", { expr = true, desc = "Move up" })

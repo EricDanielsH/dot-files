@@ -1,5 +1,4 @@
 -- Basic settings
-
 vim.g.mapleader = " "
 
 vim.wo.relativenumber = true
@@ -36,9 +35,16 @@ vim.opt.ignorecase = true
 -- Accept real colors
 vim.opt.termguicolors = true
 
+-- Open help window under
+vim.opt.splitbelow = true
+vim.optsplitright = true
+
 -- Load all mappings
 require("base.mappings")
 
-
 -- Load all plugins
 require("base.plugins.lazy")
+
+-- Load lualine
+require("configs.lualine-config")
+

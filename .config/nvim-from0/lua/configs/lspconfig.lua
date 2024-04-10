@@ -1,3 +1,5 @@
+-- THIS IS NOT USED ANYMORE
+-- TO SETUP MORE LANGUAGES, JUST DOWNLOAD THEM FROM MASON
 -- Setup language servers.
 
 -- cmp stuff

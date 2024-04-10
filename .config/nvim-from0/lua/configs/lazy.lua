@@ -1,11 +1,11 @@
 return {
   {
-    "olimorris/onedarkpro.nvim",
+    "pacokwon/onedarkhc.vim",
     priority = 1000, -- Ensure it loads first
     lazy = false,
     config = function()
       -- load colorscheme
-      vim.cmd.colorscheme("onedark_vivid")
+      vim.cmd.colorscheme("onedarkhc")
     end,
   },
   {
@@ -47,13 +47,28 @@ return {
   -- LSP shit
 
   {
-    "williamboman/mason.nvim",
-    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate", "MasonUnistallAll" },
-    opts = function()
-      return require("configs.mason")
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim" },
+    },
+    config = function()
+      return require("configs.lspconfig")
     end,
+  },
+  {
+    "williamboman/mason.nvim",
+    -- Commands
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate", "MasonUnistallAll" },
+    -- Take personal configuration
+    opts = function()
+      return require("configs.mason-config")
+    end,
+
+    -- Load personal config
     config = function(_, opts)
       require("mason").setup(opts)
+      -- Create command to install all LSPs defined in 'mason-config.lua'
       vim.api.nvim_create_user_command("MasonInstallAll", function()
         if opts.ensure_installed and #opts.ensure_installed > 0 then
           vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
@@ -64,17 +79,22 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-  },
-  {
-    "neovim/nvim-lspconfig",
+    -- This plugin should be installed before mason-lspconfig.nvim
     dependencies = {
-      { "williamboman/mason.nvim" },
-      { "williamboman/mason-lspconfig.nvim" },
+      "mason.nvim",
     },
     config = function()
-      return require("configs.lspconfig")
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+
+      require("mason-lspconfig").setup_handlers({
+        function(server_name)
+          require("lspconfig")[server_name].setup({})
+        end,
+      })
     end,
   },
+
   -- End LSP shit
   {
     "nvim-tree/nvim-tree.lua",
@@ -212,7 +232,7 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<C-CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<S-CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
@@ -248,5 +268,12 @@ return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true,
+  },
+
+  -- Bottom status bar
+  {
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 }
