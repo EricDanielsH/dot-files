@@ -1,6 +1,9 @@
-
 -- MAPPINGS --
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = "Empty line above" })
+vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = "Toggle Tree" })
+
+-- Increase or decrease numbers
+vim.keymap.set("n", "+", "<C-a>")
+vim.keymap.set("n", "_", "<C-X>")
 
 -- Open nvim lazy file
 vim.keymap.set("n", "<leader>lc", ":vsplit ~/.config/nvim/lua/configs/lazy.lua<cr>", { desc = "Open lazy config" })
@@ -56,6 +59,12 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 
+-- Resize window
+vim.keymap.set ("n", "<C-S-h>", "<C-w><")
+vim.keymap.set ("n", "<C-S-1>", "<C-w>>")
+vim.keymap. set ("n", "<C-S-k>", "<C-w>+")
+vim.keymap.set ("n","<C-S-jy","<C-w>-")
+
 -- Split windows
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { desc = "Vertical buffer" })
 vim.keymap.set("n", "<leader>h", ":split<CR>", { desc = "Horizontal buffer" })
@@ -64,8 +73,27 @@ vim.keymap.set("n", "<leader>h", ":split<CR>", { desc = "Horizontal buffer" })
 vim.keymap.set("n", "<leader>b", "<cmd>enew<CR>", { desc = "New buffer" })
 
 -- Delete current buffer
-vim.keymap.set("n", "<leader>db", "<cmd>bd<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "tw", "<cmd>bd<CR>", { desc = "Delete buffer" })
 
 -- Intelligent cursor
 vim.keymap.set("n", "k", "(v:count == 0 ? 'gk' : 'k')", { expr = true, desc = "Move down" })
 vim.keymap.set("n", "j", "(v:count == 0 ? 'gj' : 'j')", { expr = true, desc = "Move up" })
+
+-- Terminal mappings
+-- local opts = { noremap = true }
+-- vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+-- vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+-- vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+-- vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+-- vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+
+-- function _G.set_terminal_keymaps()
+--   local opts = { noremap = true }
+--   vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+--   vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+--   vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+--   vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+--   vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+--   vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+-- end

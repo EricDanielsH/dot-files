@@ -4,6 +4,7 @@ return {
     "ast-grep",
     "eslint_d",
     "typescript-language-server",
+    "tailwindcss-language-server",
     "lua-language-server",
     "biome",
     "stylua",
