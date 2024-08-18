@@ -46,4 +46,12 @@ The current Neovim configuration is organized as follows, offering a clear and m
 
 This structure facilitates easy navigation and modification, allowing for a more intuitive and efficient development experience.
 
+## Yabai and SKHD Configurations
+In addition to my Neovim setup, I have also included configurations for Yabai and SKHD. Yabai is a tiling window manager for macOS that allows for efficient window management, while SKHD is a simple hotkey daemon for macOS. These tools help enhance productivity by streamlining window management and keyboard shortcuts.
+
+---
+
 To this day, I still change some settings on my configuration to make it more intuitive for me.
+Feel free to explore these configurations and adapt them to suit your workflow.
+
+
