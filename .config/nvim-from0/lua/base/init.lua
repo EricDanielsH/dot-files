@@ -79,3 +79,6 @@ require("base.plugins.lazy")
 -- Load lualine
 require("configs.lualine-config")
 
+-- Load bufferline
+require("bufferline").setup{}
+
